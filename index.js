@@ -5,36 +5,30 @@ const assert = require('assert')
 // caps.setPageLoadStrategy("none");
 //
 
-describe('ssss', function() {
+describe('ducks tests', function() {
+
     this.timeout(300000)
     let driver
     let vars
-    beforeEach(async function() {
+    let getAllWindowHandles
+    const password = "3hJ!u2KX^7"
+
+    before(async function() {
         driver = await new Builder()
             // .withCapabilities(caps)
             .forBrowser('chrome')
             .build()
         vars = {}
-    })
-    afterEach(async function() {
-        await driver.quit();
-    })
-    it('index', async function() {
 
         await driver.get("https://wavesducks.com/")
         await driver.manage().window().setRect({ width: 1440, height: 900 })
-
-        // 1. Открыть вкладки
-        await driver.executeScript("window.open('https://waves.exchange/sign-up/', '_blank');");
-
-        // 2. Получить список окон
-        const getAllWindowHandles = await driver.getAllWindowHandles()
-
-        // 3. Регистрация
+        await driver.executeScript("window.open('https://waves.exchange/sign-up/', '_blank');")
+        getAllWindowHandles = await driver.getAllWindowHandles()
         await driver.sleep(5000)
         await driver.switchTo().window(getAllWindowHandles[1])
-        // const getPageSource = await driver.getPageSource()
-        const password = "3hJ!u2KX^7"
+    })
+
+    it('registration', async function() {
         await driver.findElement(By.css(".css-v28l6")).click()
         await driver.sleep(3000)
         await driver.findElement(By.css(".css-roynbj .css-15q5r51:nth-child(1) .css-1o78ni4")).sendKeys(password)
@@ -49,8 +43,9 @@ describe('ssss', function() {
         await driver.findElement(By.css(".css-9ctqy3")).click()
         await driver.findElement(By.css(".css-1s7zn1r")).sendKeys(address)
         await driver.findElement(By.css(".css-10j114y")).click()
+    })
 
-        // 5. Авторизация
+    it('authorization', async function() {
         await driver.switchTo().window(getAllWindowHandles[0])
         await driver.sleep(2000)
         await driver.findElement(By.linkText("Marketplace")).click()
@@ -65,185 +60,22 @@ describe('ssss', function() {
         await driver.sleep(2000)
         await driver.findElement(By.css(".css-14ilpg8")).click()
         await driver.sleep(2000)
+    })
 
-        // 6. Test text
+    it('ui test', async function() {
         await driver.findElement(By.css(".icon-magnifier")).click()
         await driver.sleep(2000)
         await driver.findElement(By.css(".form-control")).sendKeys("123456")
         await driver.sleep(2000)
         await driver.findElement(By.css(".form-control")).sendKeys(Key.ENTER)
         await driver.sleep(2000)
-
-
         await driver.findElement(By.css(".header-menu-items > .header-menu-item:nth-child(1)")).click()
-        // await driver.sleep(2000)
-
         await driver.findElement(By.css(".header-menu-items > .header-menu-item:nth-child(2)")).click()
         await driver.sleep(2000)
-
         await driver.findElement(By.css(".header-menu-items > .header-menu-item:nth-child(3)")).click()
         await driver.sleep(2000)
-
         await driver.findElement(By.css(".header-menu-items > .header-menu-item:nth-child(4)")).click()
         await driver.sleep(2000)
-
-
-
-
-        // await driver.sleep(5000)
-
-        // console.log("+++1")
-        //
-        // await driver.switchTo().window(getAllWindowHandles[2]);
-        // console.log("+++2")
-        //
-        // await driver.sleep(15000)
-        // console.log("+++3")
-        // await driver.findElement(By.linkText("Marketplace")).click()
-        // await driver.findElement(By.css(".css-vkzd22")).click()
-        // await driver.findElement(By.linkText("Регистрация")).click()
-        // await driver.findElement(By.linkText("Регистрация")).click()
-
-
-        // await driver.sleep(1000)
-        // driver.getAllWindowHandles().then(function (allhandles) {
-        //     console.log(allhandles);
-        // });
-
-
-
-
-
-        // const tabs = await driver.getAllWindowHandles();
-        // const tabs = await driver.();
-        // await driver.switchTo().window(getAllWindowHandles[0]);
-        // await driver.sleep(1000)
-        // await driver.switchTo().window(getAllWindowHandles[1]);
-        // await driver.sleep(1000)
-        // await driver.switchTo().window(getAllWindowHandles[2]);
-        // await driver.sleep(1000)
-        // await driver.switchTo().window(getAllWindowHandles[3]);
-        // await driver.sleep(1000)
-        // await driver.switchTo().window(getAllWindowHandles[4]);
-        // await driver.sleep(1000)
-        // await driver.switchTo().window(getAllWindowHandles[5]);
-        // await driver.sleep(1000)
-        // await driver.switchTo().window(getAllWindowHandles[5]);
-        // await driver.sleep(1000)
-        // driver.close();
-        // driver.switchTo().window(tabs.get(2));
-
-
-
-        // await driver.sleep(2000)
-        // await driver.findElement(By.linkText("Marketplace")).click()
-        // // await driver.sleep(4000)
-        // await driver.sleep(2000)
-        //
-        // await driver.findElement(By.css(".header-menu-items > .header-menu-item:nth-child(1)")).click()
-        // await driver.sleep(6000)
-
-        //
-        // await driver.findElement(By.css(".login-page__authorization_method_first_line")).click()
-        //
-        //
-        //
-        // await driver.switchTo().frame(2)
-        // await driver.findElement(By.css(".css-1wyiskf")).sendKeys("%xmE0ZL%1m@XVd80q543@*Cm")
-        //
-        // await driver.findElement(By.css(".css-14ilpg8")).click()
-        //
-        //
-
-
-        // await driver.switchTo().frame(2)
-        //
-        // await driver.findElement(By.css(".css-r5ruqv")).sendKeys("%xmE0ZL%1m@XVd80q543@*Cm")
-        // await driver.sleep(2000)
-        //
-        // await driver.findElement(By.css(".css-1i58v1e")).click()
-        await driver.sleep(2000)
-
-
-
-
-
-
-
-        //
-        // await driver.findElement(By.css(".header-menu-items > .header-menu-item:nth-child(2)")).click()
-        // await driver.sleep(2000)
-        //
-        // await driver.findElement(By.css(".header-menu-items > .header-menu-item:nth-child(3)")).click()
-        // await driver.sleep(2000)
-        //
-        // await driver.findElement(By.css(".header-menu-items > .header-menu-item:nth-child(4)")).click()
-        // await driver.sleep(2000)
-        //
-        // await driver.findElement(By.css(".header-menu-items > .header-menu-item:nth-child(5)")).click()
-        // await driver.sleep(2000)
-        //
-        // await driver.findElement(By.css(".header-menu-items > .header-menu-item:nth-child(6)")).click()
-        // // await driver.findElement(By.linkText("Collective Farms")).click()
-        // await driver.sleep(200000)
-
-
-
     })
-    // it('ssss', async function() {
-    //     await driver.get("https://www.google.com/")
-    //     await driver.manage().window().setRect({ width: 1440, height: 900 })
-    //     await driver.findElement(By.name("q")).click()
-    //     await driver.findElement(By.name("q")).sendKeys("sad")
-    //     await driver.findElement(By.css(".lnXdpd")).click()
-    //     await driver.findElement(By.css("center:nth-child(1) > .gNO89b")).click()
-    //     {
-    //         const element = await driver.findElement(By.css("center:nth-child(1) > .gNO89b"))
-    //         await driver.actions({ bridge: true }).moveToElement(element).perform()
-    //     }
-    //     await driver.findElement(By.css(".LuVEUc:nth-child(2) > .UDZeY")).click()
-    //     {
-    //         const element = await driver.findElement(By.css(".RzdJxc:nth-child(2) .pcJO7e:nth-child(1)"))
-    //         await driver.actions({ bridge: true }).moveToElement(element).perform()
-    //     }
-    //     {
-    //         const element = await driver.findElement(By.css("div:nth-child(2) > .tF2Cxc .LC20lb"))
-    //         await driver.actions({ bridge: true }).moveToElement(element).perform()
-    //     }
-    //     await driver.findElement(By.css("div:nth-child(2) > .tF2Cxc .LC20lb")).click()
-    //     await driver.findElement(By.css("p:nth-child(7)")).click()
-    // })
-    // it('Untitled1', async function() {
-    //     // Test name: Untitled1
-    //     // Step # | name | target | value
-    //     // 1 | open | / |
-    //     await driver.get("https://www.google.com/")
-    //     // 2 | setWindowSize | 1440x900 |
-    //     await driver.manage().window().setRect({ width: 1440, height: 900 })
-    //     // 3 | mouseOver | linkText=Как работает Google Поиск |
-    //     {
-    //         const element = await driver.findElement(By.linkText("Как работает Google Поиск"))
-    //         await driver.actions({ bridge: true }).moveToElement(element).perform()
-    //     }
-    //     // 4 | click | css=.FPdoLc |
-    //     await driver.findElement(By.css(".FPdoLc")).click()
-    //     // 5 | mouseOver | css=center:nth-child(1) > .gNO89b |
-    //     {
-    //         const element = await driver.findElement(By.css("center:nth-child(1) > .gNO89b"))
-    //         await driver.actions({ bridge: true }).moveToElement(element).perform()
-    //     }
-    //     // 6 | click | css=center:nth-child(1) > .gNO89b |
-    //     await driver.findElement(By.css("center:nth-child(1) > .gNO89b")).click()
-    //     // 7 | click | css=center:nth-child(1) > .gNO89b |
-    //     await driver.findElement(By.css("center:nth-child(1) > .gNO89b")).click()
-    //     // 8 | click | css=center:nth-child(1) > .gNO89b |
-    //     await driver.findElement(By.css("center:nth-child(1) > .gNO89b")).click()
-    //     // 9 | mouseOut | css=center:nth-child(1) > .gNO89b |
-    //     {
-    //         const element = await driver.findElement(By.CSS_SELECTOR, "body")
-    //         await driver.actions({ bridge: true }).moveToElement(element, 0, 0).perform()
-    //     }
-    //     // 10 | click | css=center:nth-child(1) > .RNmpXc |
-    //     await driver.findElement(By.css("center:nth-child(1) > .RNmpXc")).click()
-    // })
+
 })
