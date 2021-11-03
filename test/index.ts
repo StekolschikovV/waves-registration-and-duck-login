@@ -1,4 +1,5 @@
 import {Options} from "selenium-webdriver/chrome";
+require('dotenv').config();
 
 const {Builder, By, Capabilities, until, Key} = require('selenium-webdriver')
 // const assert = require('assert')
@@ -31,10 +32,13 @@ describe('ducks tests', function () {
     let vars
     let getAllWindowHandles
     let address
-    const password = "3hJ!u2KX^7"
-    const seed = process.env.SEED || "the first duck owner ever been"
-    const options = new Options();
-    // options.headless(); // <--- !!! for github action
+    const password = process.env.PASSWORD
+    const seed = process.env.SEED
+    const headless = process.env.HEADLESS
+    const options = new Options()
+    if (headless === "1") {
+        options.headless()
+    }
     const authenticationType = process.env.AUTHENTICATION_TYPE || AuthenticationType.login
 
     const action = async (target, type: ActionType, timeout: ActionTimeout, waitTarget = null, sendValue = null) => {
