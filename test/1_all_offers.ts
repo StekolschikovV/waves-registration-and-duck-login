@@ -21,7 +21,6 @@ describe('1_marketplace_login', function () {
 
     before(async function () {
         driver = await new Builder()
-            // .withCapabilities(caps)
             .forBrowser('chrome')
             .setChromeOptions(options)
             .build()
@@ -34,7 +33,7 @@ describe('1_marketplace_login', function () {
         await driver.sleep(ActionTimeout.normal)
     })
 
-    it('registration', async () => {
+    it('Registration', async () => {
         await driver.switchTo().window(getAllWindowHandles[1])
         await driver.sleep(ActionTimeout.normal)
         await action(driver, By.css(".css-v28l6"), ActionType.click, ActionTimeout.short)
@@ -51,7 +50,7 @@ describe('1_marketplace_login', function () {
     })
 
 
-    it('authorization', async function () {
+    it('Authorization', async function () {
         await driver.switchTo().window(getAllWindowHandles[0])
         await driver.sleep(ActionTimeout.short)
         await action(driver, By.linkText("Start"), ActionType.click, ActionTimeout.normal)
@@ -66,7 +65,7 @@ describe('1_marketplace_login', function () {
         await driver.sleep(ActionTimeout.larges)
     })
 
-    it('test: "All offers"', async function () {
+    it('Test: "All offers"', async function () {
         await action(driver, By.linkText("Marketplace"), ActionType.click, ActionTimeout.short)
         await driver.switchTo().frame(1)
         getAllWindowHandles = await driver.getAllWindowHandles()

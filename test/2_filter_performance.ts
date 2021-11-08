@@ -22,7 +22,6 @@ describe('Filter performance', function () {
 
     before(async function () {
         driver = await new Builder()
-            // .withCapabilities(caps)
             .forBrowser('chrome')
             .setChromeOptions(options)
             .build()
@@ -35,7 +34,7 @@ describe('Filter performance', function () {
         await driver.sleep(ActionTimeout.normal)
     })
 
-    it('registration', async () => {
+    it('Registration', async () => {
         await driver.switchTo().window(getAllWindowHandles[1])
         await driver.sleep(ActionTimeout.normal)
         await action(driver, By.css(".css-v28l6"), ActionType.click, ActionTimeout.short)
@@ -52,7 +51,7 @@ describe('Filter performance', function () {
     })
 
 
-    it('authorization', async function () {
+    it('Authorization', async function () {
         await driver.switchTo().window(getAllWindowHandles[0])
         await driver.sleep(ActionTimeout.short)
         await action(driver, By.linkText("Start"), ActionType.click, ActionTimeout.normal)
