@@ -6,7 +6,7 @@ const {Builder, By, until, } = require('selenium-webdriver')
 const chai = require('chai');
 const assert = chai.assert;
 
-describe('1_marketplace_login', function () {
+describe('All offers', function () {
 
     this.timeout(300000)
     let driver
