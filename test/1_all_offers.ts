@@ -76,8 +76,6 @@ describe('1_marketplace_login', function () {
         assert.equal(allOffersText, "All offers");
     })
 
-
-
     after(async () => driver.quit());
 
 })
