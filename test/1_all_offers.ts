@@ -18,7 +18,6 @@ describe('All offers', function () {
     if (headless === "1") {
         options.headless()
     }
-
     before(async function () {
         driver = await new Builder()
             .forBrowser('chrome')
@@ -48,7 +47,6 @@ describe('All offers', function () {
         await action(driver, By.css(".css-10j114y"), ActionType.click, ActionTimeout.short)
         await driver.sleep(ActionTimeout.short)
     })
-
 
     it('Authorization', async function () {
         await driver.switchTo().window(getAllWindowHandles[0])

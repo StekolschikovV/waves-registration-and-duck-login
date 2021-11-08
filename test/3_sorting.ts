@@ -26,7 +26,6 @@ describe('Sorting', function () {
             .setChromeOptions(options)
             .build()
         vars = {}
-
         await driver.get("https://wavesducks.com/")
         await driver.manage().window().setRect({width: 1440, height: 900})
         await driver.executeScript("window.open('https://waves.exchange/sign-up/', '_blank');")
@@ -82,7 +81,6 @@ describe('Sorting', function () {
             last = res
         }
     })
-
 
     after(async () => driver.quit());
 

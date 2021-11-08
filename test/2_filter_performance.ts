@@ -19,14 +19,12 @@ describe('Filter performance', function () {
     if (headless === "1") {
         options.headless()
     }
-
     before(async function () {
         driver = await new Builder()
             .forBrowser('chrome')
             .setChromeOptions(options)
             .build()
         vars = {}
-
         await driver.get("https://wavesducks.com/")
         await driver.manage().window().setRect({width: 1440, height: 900})
         await driver.executeScript("window.open('https://waves.exchange/sign-up/', '_blank');")
