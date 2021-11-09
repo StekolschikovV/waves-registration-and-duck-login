@@ -35,40 +35,33 @@ describe('Filter performance', function () {
     it('Registration', async () => {
         await driver.switchTo().window(getAllWindowHandles[1])
         await driver.sleep(ActionTimeout.normal)
-        await action(driver, By.css(".css-v28l6"), ActionType.click, ActionTimeout.short)
-        await action(driver, By.css(".css-roynbj .css-15q5r51:nth-child(1) .css-1o78ni4"), ActionType.sendKeys, ActionTimeout.short, By.css(".css-roynbj .css-15q5r51:nth-child(1) .css-1o78ni4"), password)
+        await action(driver, By.css(".css-v28l6"), ActionType.click, ActionTimeout.normal)
+        await action(driver, By.css(".css-roynbj .css-15q5r51:nth-child(1) .css-1o78ni4"), ActionType.sendKeys, ActionTimeout.normal, By.css(".css-roynbj .css-15q5r51:nth-child(1) .css-1o78ni4"), password)
         await action(driver, By.css(".css-roynbj .css-15q5r51:nth-child(2) .css-1o78ni4"), ActionType.sendKeys, ActionTimeout.short, By.css(".css-roynbj .css-15q5r51:nth-child(1) .css-1o78ni4"), password)
-        await action(driver, By.css(".css-g013ys"), ActionType.click, ActionTimeout.short)
-        await action(driver, By.css(".css-hw3m92"), ActionType.click, ActionTimeout.short)
+        await action(driver, By.css(".css-g013ys"), ActionType.click, ActionTimeout.normal)
+        await action(driver, By.css(".css-hw3m92"), ActionType.click, ActionTimeout.normal)
         await driver.wait(until.elementLocated(By.css(".css-13ngssx")));
         const address = await driver.findElement(By.css(".css-13ngssx")).getText()
-        await action(driver, By.css(".css-9ctqy3"), ActionType.click, ActionTimeout.short)
-        await action(driver, By.css(".css-1s7zn1r"), ActionType.sendKeys, ActionTimeout.short, null, address)
-        await action(driver, By.css(".css-10j114y"), ActionType.click, ActionTimeout.short)
-        await driver.sleep(ActionTimeout.short)
+        await action(driver, By.css(".css-9ctqy3"), ActionType.click, ActionTimeout.normal)
+        await action(driver, By.css(".css-1s7zn1r"), ActionType.sendKeys, ActionTimeout.normal, null, address)
+        await action(driver, By.css(".css-10j114y"), ActionType.click, ActionTimeout.normal)
+        await driver.sleep(ActionTimeout.normal)
     })
-
 
     it('Authorization', async function () {
         await driver.switchTo().window(getAllWindowHandles[0])
-        await driver.sleep(ActionTimeout.short)
-        await action(driver, By.linkText("Start"), ActionType.click, ActionTimeout.normal)
-        await driver.sleep(ActionTimeout.larges)
-        getAllWindowHandles = await driver.getAllWindowHandles()
-        await driver.switchTo().window(getAllWindowHandles[2])
-        await action(driver, By.css("a.login-page__authorization_method.login-page__authorization_method_first_line"), ActionType.click, ActionTimeout.normal)
-        await driver.sleep(ActionTimeout.larges)
+        await driver.sleep(2000)
+        await action(driver, By.linkText("Marketplace"), ActionType.click, ActionTimeout.normal)
+        await action(driver, By.css(".header-menu-items > .header-menu-item:nth-child(1)"), ActionType.click, ActionTimeout.normal)
+        await action(driver, By.css(".login-page__authorization_method_first_line"), ActionType.click, ActionTimeout.normal)
         await driver.switchTo().frame(2)
-        await action(driver, By.css(".css-1wyiskf"), ActionType.sendKeys, ActionTimeout.short, null, password)
-        await action(driver, By.css(".css-14ilpg8"), ActionType.click, ActionTimeout.short)
-        await driver.sleep(ActionTimeout.larges)
+        await action(driver, By.css(".css-1wyiskf"), ActionType.sendKeys, ActionTimeout.normal, null, password)
+        await action(driver, By.css(".css-14ilpg8"), ActionType.click, ActionTimeout.normal)
+        await driver.sleep(10000)
     })
 
     it('Go to page: Marketplace', async () => {
         await action(driver, By.linkText("Marketplace"), ActionType.click, ActionTimeout.short)
-        await driver.switchTo().frame(1)
-        getAllWindowHandles = await driver.getAllWindowHandles()
-        await driver.switchTo().window(getAllWindowHandles[2])
         await driver.sleep(ActionTimeout.larges)
     })
 
@@ -112,7 +105,7 @@ describe('Filter performance', function () {
         await driver.navigate().refresh()
         await driver.sleep(ActionTimeout.larges)
         assert.equal(isChecked, false)
-    });
+    })
 
     after(async () => driver.quit());
 

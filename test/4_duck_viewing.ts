@@ -33,22 +33,19 @@ describe('Duck viewing', function () {
         await driver.sleep(ActionTimeout.normal)
     })
 
-    it('Login', async () => {
+    it('Registration', async () => {
         await driver.switchTo().window(getAllWindowHandles[1])
         await driver.sleep(ActionTimeout.normal)
-        await action(driver, By.css(".css-v28l6"), ActionType.click, ActionTimeout.short)
-        await action(driver, By.css(".css-roynbj .css-15q5r51:nth-child(1) .css-1o78ni4"), ActionType.sendKeys, ActionTimeout.short, By.css(".css-roynbj .css-15q5r51:nth-child(1) .css-1o78ni4"), password)
+        await action(driver, By.css(".css-v28l6"), ActionType.click, ActionTimeout.normal)
+        await action(driver, By.css(".css-roynbj .css-15q5r51:nth-child(1) .css-1o78ni4"), ActionType.sendKeys, ActionTimeout.normal, By.css(".css-roynbj .css-15q5r51:nth-child(1) .css-1o78ni4"), password)
         await action(driver, By.css(".css-roynbj .css-15q5r51:nth-child(2) .css-1o78ni4"), ActionType.sendKeys, ActionTimeout.short, By.css(".css-roynbj .css-15q5r51:nth-child(1) .css-1o78ni4"), password)
-        await action(driver, By.css(".css-g013ys"), ActionType.click, ActionTimeout.short)
-        await action(driver, By.css(".css-hw3m92"), ActionType.click, ActionTimeout.short)
+        await action(driver, By.css(".css-g013ys"), ActionType.click, ActionTimeout.normal)
+        await action(driver, By.css(".css-hw3m92"), ActionType.click, ActionTimeout.normal)
         await driver.wait(until.elementLocated(By.css(".css-13ngssx")));
-        address = await driver.findElement(By.css(".css-13ngssx")).getText()
-        await action(driver, By.css(".css-162eomj"), ActionType.click, ActionTimeout.short)
-        await action(driver, By.css(".css-1evtq2z"), ActionType.click, ActionTimeout.short)
-        await action(driver, By.tagName("textarea"), ActionType.sendKeys, ActionTimeout.short, null, seed)
-        await action(driver, By.css(".css-9ctqy3"), ActionType.click, ActionTimeout.short)
-        await action(driver, By.css(".css-1s7zn1r"), ActionType.sendKeys, ActionTimeout.short, null, "TEST")
-        await action(driver, By.css(".css-10j114y"), ActionType.click, ActionTimeout.short)
+        const address = await driver.findElement(By.css(".css-13ngssx")).getText()
+        await action(driver, By.css(".css-9ctqy3"), ActionType.click, ActionTimeout.normal)
+        await action(driver, By.css(".css-1s7zn1r"), ActionType.sendKeys, ActionTimeout.normal, null, address)
+        await action(driver, By.css(".css-10j114y"), ActionType.click, ActionTimeout.normal)
         await driver.sleep(ActionTimeout.normal)
     })
 
