@@ -1,9 +1,8 @@
 import {Options} from "selenium-webdriver/chrome";
-import {ActionTimeout, ActionType, AuthenticationType} from "../dataType";
+import {ActionTimeout, ActionType} from "../dataType";
 import {action} from "../fn";
 require('dotenv').config();
 const {Builder, By, until,} = require('selenium-webdriver')
-const assert = require('assert');
 
 describe('Duck Wars', function () {
 
@@ -30,12 +29,12 @@ describe('Duck Wars', function () {
         await driver.manage().window().setRect({width: 1440, height: 900})
         await driver.executeScript("window.open('https://waves.exchange/sign-up/', '_blank');")
         getAllWindowHandles = await driver.getAllWindowHandles()
-        await driver.sleep(ActionTimeout.normal)
+        await driver.sleep(ActionTimeout.larges)
     })
 
-    it('login', async () => {
+    it('Login', async () => {
         await driver.switchTo().window(getAllWindowHandles[1])
-        await driver.sleep(ActionTimeout.normal)
+        await driver.sleep(ActionTimeout.larges)
         await action(driver, By.css(".css-v28l6"), ActionType.click, ActionTimeout.short)
         await action(driver, By.css(".css-roynbj .css-15q5r51:nth-child(1) .css-1o78ni4"), ActionType.sendKeys, ActionTimeout.short, By.css(".css-roynbj .css-15q5r51:nth-child(1) .css-1o78ni4"), password)
         await action(driver, By.css(".css-roynbj .css-15q5r51:nth-child(2) .css-1o78ni4"), ActionType.sendKeys, ActionTimeout.short, By.css(".css-roynbj .css-15q5r51:nth-child(1) .css-1o78ni4"), password)
@@ -61,10 +60,16 @@ describe('Duck Wars', function () {
         await driver.switchTo().frame(2)
         await action(driver, By.css(".css-1wyiskf"), ActionType.sendKeys, ActionTimeout.normal, null, password)
         await action(driver, By.css(".css-14ilpg8"), ActionType.click, ActionTimeout.normal)
+    })
+
+    it('Go to page: Play To Earn', async () => {
         await driver.sleep(ActionTimeout.larges)
         await driver.sleep(ActionTimeout.larges)
         await driver.findElement(By.linkText("Play To EarnNEW")).click()
         await driver.sleep(ActionTimeout.normal)
+    })
+
+    it('Start game', async () => {
         await driver.switchTo().frame(1)
         await driver.sleep(ActionTimeout.normal)
         await action(driver, By.css(".css-1wyiskf"), ActionType.sendKeys, ActionTimeout.short, null, password)
@@ -79,10 +84,6 @@ describe('Duck Wars', function () {
         await driver.sleep(ActionTimeout.larges)
         await action(driver, By.css(".DuckList_list__1iE4a"), ActionType.click, ActionTimeout.short)
     })
-
-
-    
-
 
     after(async () => driver.quit());
 
