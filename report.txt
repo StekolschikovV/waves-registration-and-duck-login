@@ -1,37 +1,26 @@
 
 
   All offers
-    ✔ Registration (20141ms)
-    ✔ Authorization (67058ms)
-    ✔ Go to page: Marketplace (5299ms)
-    ✔ Test: "All offers"
+    1) Registration
+    2) Authorization
+    3) Go to page: Marketplace
+    4) Test: "All offers"
 
   Filter performance
-    ✔ Registration (20017ms)
-    ✔ Authorization (75054ms)
-    ✔ Go to page: Marketplace (5365ms)
-    ✔ Get an error about lack of ducks when choosing a filter (5042ms)
-    ✔ The genotype of all ducks contains the letter O (1930ms)
-    ✔ Checking whether filters are saved on reboot (5530ms)
+    5) Registration
+    6) Authorization
+    7) Go to page: Marketplace
+    8) Get an error about lack of ducks when choosing a filter
+    9) The genotype of all ducks contains the letter O
+    10) Checking whether filters are saved on reboot
 
   Sorting
-    ✔ Registration (20052ms)
-    ✔ Authorization (67748ms)
-    ✔ Go to page: Marketplace (5523ms)
-    ✔ Sort by price (10768ms)
+    11) Registration
+    12) Authorization
+    13) Go to page: Marketplace
+    14) Sort by price
 
   Duck viewing
-    ✔ Registration (19988ms)
-    ✔ Authorization (70845ms)
-    ✔ Go to page: Marketplace (7100ms)
-    ✔ Receiving a message about insufficient funds (29135ms)
-
-  Duck Wars
-    ✔ Login (11061ms)
-    ✔ Authorization (71669ms)
-    ✔ Go to page: Play To Earn (12121ms)
-    ✔ Start game (28657ms)
-
-
-  22 passing (10m)
-
+    15) Registration
+    16) Authorization
+    17) Go to page: Marketplace
