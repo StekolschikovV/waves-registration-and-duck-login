@@ -16,6 +16,7 @@ describe('All offers', function () {
     let vars
     let getAllWindowHandles
     const options = new Options()
+    console.log("HEADLESS_MODE",HEADLESS_MODE)
     if (HEADLESS_MODE === "1") {
         options.headless()
     }
@@ -53,8 +54,6 @@ describe('All offers', function () {
     it('Authorization', async function () {
         await driver.switchTo().window(getAllWindowHandles[0])
         await driver.sleep(ActionTimeout.larges)
-        // await action(driver, By.linkText("Marketplace"), ActionType.click, ActionTimeout.normal)
-        // await action(driver, By.css(".header-menu-items > .header-menu-item:nth-child(1)"), ActionType.click, ActionTimeout.normal)
         await action(driver, By.css(".login-page__authorization_method_first_line"), ActionType.click, ActionTimeout.normal)
         await driver.switchTo().frame(2)
         await action(driver, By.css(".css-1wyiskf"), ActionType.sendKeys, ActionTimeout.normal, null, PASSWORD)

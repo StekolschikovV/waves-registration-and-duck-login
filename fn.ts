@@ -1,4 +1,6 @@
 import {ActionTimeout, ActionType} from "./dataType";
+import {By} from "selenium-webdriver";
+import {PASSWORD} from "./test/env";
 const {until} = require('selenium-webdriver')
 
 export const action = async (driver, target, type: ActionType, timeout: ActionTimeout, waitTarget = null, sendValue = null) => {

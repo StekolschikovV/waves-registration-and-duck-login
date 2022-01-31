@@ -7,7 +7,9 @@
         "start": "ts-node bot.ts",
         "start-bot2": "tsc ./bot && node bot.js",
         "test": "mocha --timeout 10000 --require ts-node/register test/**/*.ts > report.txt",
-        "t.1": "mocha --timeout 10000 --require ts-node/register test/1_all_offers.ts"
+        "t.1": "mocha --timeout 10000 --require ts-node/register test/1_all_offers.ts",
+        "t.2": "mocha --timeout 10000 --require ts-node/register test/2_filter_performance.ts",
+        "t.3": "mocha --timeout 10000 --require ts-node/register test/3_sorting.ts"
     },
     "keywords": [],
     "author": "",
